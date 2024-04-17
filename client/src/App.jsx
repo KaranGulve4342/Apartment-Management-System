@@ -17,6 +17,10 @@ import RoomDetails from "./components/RoomDetails";
 import ErrorPage from "./ErrorPage";
 import ComplaintsViewerOwner from "./components/ComplaintsViewerOwner";
 import RoomDetailsOwner from "./components/RoomDetailsOwner";
+import DeleteOwner from "./components/OwnerDetails";
+import DeleteTenant from "./components/TenantDetails";
+import DeleteParkingSlot from "./components/CreatingParkingSlot";
+import deleteComplaints from "./components/ComplaintsViewer";
 
 function App() {
   // Sidebar
@@ -251,6 +255,10 @@ function App() {
             </main>
           }
         />
+        <Route path="/admin/deleteowner" element={<DeleteOwner />} />
+        <Route path="/admin/deletetenant" element={<DeleteTenant />} />
+        <Route path="/admin/deleteparkingslot" element={<DeleteParkingSlot />} />
+        <Route path="/admin/deletecomplaint" element={<deleteComplaints />} />
         <Route
           path="/*"
           element={

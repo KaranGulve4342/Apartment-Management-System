@@ -9,7 +9,7 @@ function Dashboard(props) {
   const getBoxInfo = async () => {
     const whom = JSON.parse(window.localStorage.getItem("whom")).userType;
     try {
-      const res = await axios.post(`http://localhost:5000/dashboard/${whom}`, {
+      const res = await axios.post(`http://localhost:4000/dashboard/${whom}`, {
         userId: JSON.parse(window.localStorage.getItem("whom")).username,
       });
       if (whom === "admin") {

@@ -24,20 +24,35 @@ function OwnerDetails(props) {
     }
   };
 
+  // const deleteOwner = async (owner_id) => {
+  //   try {
+  //     const res = await axios.post(`${ process.env.REACT_APP_SERVER } / deleteowner`, {
+  //       userId: owner_id,
+  //     });
+  //   if (res.status === 200) {
+  //     toast.success("Deleted successfully");
+  //     getOwnerData();
+  //   }
+  // } catch (error) {
+  //   console.log(error);
+  //   toast.error(error.message);
+  // }
+
   const deleteOwner = async (owner_id) => {
     try {
-      const res = await axios.post(`${ process.env.REACT_APP_SERVER } / deleteowner`, {
+      const res = await axios.post(`${process.env.REACT_APP_SERVER}/deleteowner`, {
         userId: owner_id,
       });
-    if (res.status === 200) {
-      toast.success("Deleted successfully");
-      getOwnerData();
+      if (res.status === 200) {
+        toast.success("Deleted successfully");
+        console.log("Deleted successfully");
+        getOwnerData();
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
     }
-  } catch (error) {
-    console.log(error);
-    toast.error(error.message);
-  }
-};
+  };
 
 useEffect(() => {
   getOwnerData();
@@ -179,6 +194,6 @@ return (
     </div>
   </section>
 );
-}
+};
 
 export default OwnerDetails;
