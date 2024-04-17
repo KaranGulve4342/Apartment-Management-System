@@ -230,22 +230,43 @@ function deletetenant(id, callback) {
   });
 }
 
-//owner delete
+// //owner delete
+// function deleteowner(id, callback) {
+//   // First, delete referencing rows from 'identity'
+//   const deleteIdentityQuery = "DELETE FROM identity WHERE owner_id=?";
+//   con.query(deleteIdentityQuery, id, (err, identityResults) => {
+//     if (err) {
+//       callback(err, null);
+//     } else {
+//       // Then, delete the row from 'owner'
+//       const deleteOwnerQuery = "DELETE FROM owner WHERE owner_id=?";
+//       con.query(deleteOwnerQuery, id, (err, ownerResults) => {
+//         callback(err, ownerResults);
+//       });
+//     }
+//   });
+// }
+
 function deleteowner(id, callback) {
   // First, delete referencing rows from 'identity'
   const deleteIdentityQuery = "DELETE FROM identity WHERE owner_id=?";
   con.query(deleteIdentityQuery, id, (err, identityResults) => {
     if (err) {
-      callback(err, null);
+      callback(err, null); // Pass error to the callback
     } else {
       // Then, delete the row from 'owner'
       const deleteOwnerQuery = "DELETE FROM owner WHERE owner_id=?";
       con.query(deleteOwnerQuery, id, (err, ownerResults) => {
-        callback(err, ownerResults);
+        if (err) {
+          callback(err, null); // Pass error to the callback
+        } else {
+          callback(null, ownerResults); // Pass results to the callback
+        }
       });
     }
   });
 }
+
 
 //employee delete
 function deleteemployee(id, callback) {
