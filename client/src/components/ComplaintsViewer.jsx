@@ -19,7 +19,7 @@ function ComplaintsViewer(props) {
 
   const deleteComplaints = async (room_no) => {
     try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER } / deletecomplaint`, {
+      const res = await axios.post(`${process.env.REACT_APP_SERVER }/deletecomplaint`, {
         roomId: room_no,
       });
     if (res.status === 200) {

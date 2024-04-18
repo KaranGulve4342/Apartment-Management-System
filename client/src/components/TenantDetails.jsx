@@ -18,7 +18,7 @@ function TenantDetails(props) {
   };
   const deleteTenant = async (tenant_id) => {
     try {
-      const res = await axios.post(`${ process.env.REACT_APP_SERVER } / deletetenant`, {
+      const res = await axios.post(`${process.env.REACT_APP_SERVER}/deletetenant`, {
         userId: tenant_id,
       });
     if (res.status === 200) {
